@@ -1,0 +1,23 @@
+[project]
+name = "legal-document-analyzer"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "aiyermab",email = "baalakrishnan.aiyermanikandan@lexisnexisrisk.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "langchain (>=0.3.27,<0.4.0)",
+    "langchain-community (>=0.3.27,<0.4.0)",
+    "langchain-openai (>=0.3.30,<0.4.0)",
+    "unstructured (>=0.18.13,<0.19.0)",
+    "python-docx (>=1.2.0,<2.0.0)",
+    "langgraph (>=0.6.6,<0.7.0)",
+    "pymilvus (>=2.6.0,<3.0.0)",
+]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
