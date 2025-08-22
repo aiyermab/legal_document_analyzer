@@ -21,6 +21,6 @@ graph.set_entry_point("DocumentAnalyzer")
 
 
 # Compile app
-logging.info("Compiling RAG App...")
+logger.info("Compiling RAG App...")
 rag_app = graph.compile()
 logger.info("Legal Document Analyzer orchestrator initialized successfully")
