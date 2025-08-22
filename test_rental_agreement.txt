@@ -1,0 +1,30 @@
+RENTAL AGREEMENT
+
+This Rental Agreement is made between John Doe (Landlord) and Jane Smith (Tenant).
+
+PROPERTY DETAILS:
+Address: 123 Main Street, Mumbai, Maharashtra
+
+RENTAL TERMS:
+1. Monthly Rent: Rs. 25,000
+2. Security Deposit: Rs. 50,000
+3. Lease Duration: 12 months starting from January 1, 2024
+
+TENANT OBLIGATIONS:
+- Pay rent by 5th of every month
+- Maintain property in good condition
+- No subletting without written consent
+
+LANDLORD OBLIGATIONS:
+- Provide peaceful enjoyment of property
+- Maintain structural repairs
+
+TERMINATION:
+Either party may terminate with 30 days written notice.
+
+This agreement is governed by the laws of Maharashtra, India.
+
+Signatures:
+Landlord: _______________
+Tenant: _______________
+Date: _______________
