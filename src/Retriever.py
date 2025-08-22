@@ -4,7 +4,9 @@ from langchain_openai import AzureOpenAIEmbeddings
 from State import RAGState
 import os
 
+
 log = logging.getLogger(__name__)
+
 
 
 def get_embed_model():
@@ -21,12 +23,13 @@ def get_embed_model():
 def retriever(state: RAGState) -> RAGState:
     try:
         # Connect to Milvus
-        connections.connect("default", host="localhost", port=19530)
+        connections.connect("default", uri=os.getenv("MIVLUS_URL"), user=os.getenv("MILVUS_USER"), password=os.getenv("MILVUS_PASSWORD"))
         collection = Collection("legal_documents")
         collection.load()
 
         final_results=  []
         embed_model=get_embed_model()
+        log.info("Retrieving similar documents...")
         
         clauses= state["document_report"].important_clauses
         # Query for similar documents
@@ -36,7 +39,7 @@ def retriever(state: RAGState) -> RAGState:
                 data=[query_embedding],
                 param={"nprobe": 32},
                 anns_field="embedding",
-                limit=5,
+                limit=1,
                 output_fields=["id", "source", "text"],
                 partition_names=None,
             )
@@ -49,6 +52,7 @@ def retriever(state: RAGState) -> RAGState:
                     })
             final_results.extend(formatted_results)
         state["retrieved_laws"] = final_results
+        log.info(f"Retrieved {len(final_results)} similar documents")
         return state
     except Exception as e:
         log.error(f"Error in retriever: {e}")

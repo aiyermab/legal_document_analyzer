@@ -2,6 +2,7 @@ from langchain_openai import AzureChatOpenAI
 from langchain_community.document_loaders import UnstructuredWordDocumentLoader
 from langchain_core.prompts import PromptTemplate as LangChainPromptTemplate
 from State import RAGState, LegalDocumentAnalysis
+import logging
 import os
 
 def get_llm_model():
@@ -34,7 +35,7 @@ def create_prompt() -> LangChainPromptTemplate:
     - Parties Involved: All individuals, companies, or entities mentioned as parties
     - Date: Any dates mentioned in the document
     - Location: City, state, and country mentioned
-    - Important Clauses: Key provisions, terms, conditions, or clauses that are legally significant
+    - Important Clauses: Key provisions, terms, conditions, or clauses that are legally significant. 
 
     """
     
@@ -61,11 +62,12 @@ def analyze_document(state : RAGState) -> RAGState:
 
     llm_chain= prompt | sllm
     
+    logging.info("Analyzing document...")
     # Get LLM response
     response = llm_chain.invoke({"document_text": document_text})
 
     state["document_report"] = response
-    
+    logging.info("Document analysis complete")
     return state
 
 

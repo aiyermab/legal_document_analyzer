@@ -2,6 +2,7 @@ from langchain_core.prompts import PromptTemplate as LangChainPromptTemplate
 from langchain_openai import AzureChatOpenAI
 from State import RAGState
 import os
+import logging
 
 
 def get_llm_model():
@@ -44,9 +45,11 @@ def legal_analysis(state : RAGState) -> RAGState:
     """
     prompt_template = LangChainPromptTemplate.from_template(prompt)
     llm = get_llm_model()
+    logging.info("Invoking LLM model for legal analysis...")
     llm_chain = prompt_template | llm
     original_document = state["document"]
     clauses = state["retrieved_laws"]
     response = llm_chain.invoke({"original_document": original_document, "clauses": clauses})
+    logging.info("LLM model invocation complete")
     state["legal_analysis"] = response.content
     return state

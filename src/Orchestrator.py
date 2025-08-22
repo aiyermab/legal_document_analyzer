@@ -3,6 +3,7 @@ from DocumentAnalyzer import analyze_document
 from Retriever import retriever
 from LegalAnalyst import legal_analysis
 from State import RAGState
+import logging
 
 
 graph = StateGraph(RAGState)
@@ -19,4 +20,5 @@ graph.set_entry_point("DocumentAnalyzer")
 
 
 # Compile app
+logging.info("Compiling RAG App...")
 rag_app = graph.compile()

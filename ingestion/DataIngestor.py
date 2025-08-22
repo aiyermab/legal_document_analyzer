@@ -39,7 +39,7 @@ class DataIngestor:
     def _connect_to_milvus(self):
         """Connect to Milvus database"""
         try:
-            connections.connect("default", host=self.milvus_host, port=self.milvus_port)
+            connections.connect("default", uri=os.getenv("MIVLUS_URL"), user=os.getenv("MILVUS_USER"), password=os.getenv("MILVUS_PASSWORD"))
             logging.info("Connected to Milvus successfully")
         except Exception as e:
             logging.error(f"Failed to connect to Milvus: {e}")
